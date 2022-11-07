@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AddAnnouncementComponentComponent } from './add-announcement/add-announcement.component';
 import { HomeComponent } from './home/home.component';
+import { CanDeactivateGuard } from './services/candeactivate-guard.service';
 
 
 const routes:Routes=[
   { path: '', component: HomeComponent, pathMatch:"full"  } ,
-  { path: 'add', component: AddAnnouncementComponentComponent},
+  { path: 'add',canDeactivate:[CanDeactivateGuard ], component: AddAnnouncementComponentComponent},
   
 ];
 

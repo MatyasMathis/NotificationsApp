@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { AnnouncementService } from './services/announcement.service';
+import { CanDeactivateGuard } from './services/candeactivate-guard.service';
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule
     
   ],
-  providers: [],
+  providers: [AnnouncementService,CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,13 +31,14 @@
 
       <div class="row">
         <div class="col-3">
-          <button name="submit" class="btn btn-lg btn-primary" type="submit" (click)="onAddAnnouncement()">Add </button>
+          <button  name="submit" class="btn btn-lg btn-primary" type="submit" (click)="onAddAnnouncement()">Add </button>
           
         </div>
         <div class="col-3">
          
-          <button name="cancel" class="btn btn-lg btn-danger"  (click)="onAddAnnouncement()" routerLink="/">Cancel</button>
+          <button name="cancel" class="btn btn-lg btn-danger"  (click)="canExit()" routerLink="/">Cancel</button>
         </div>
+        <p *ngIf="formFilled">Announcement added!</p>
       </div>
   </form>
   

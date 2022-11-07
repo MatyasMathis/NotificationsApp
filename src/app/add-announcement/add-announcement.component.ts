@@ -2,6 +2,7 @@ import { Component, OnInit,Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Announcement } from '../announcement';
 import { Category } from '../category';
+import { AnnouncementService } from '../services/announcement.service';
 
 
 @Component({
@@ -15,16 +16,41 @@ export class AddAnnouncementComponentComponent implements OnInit {
    author:string='';
    imageURL:string='';
    message:string='';
-   category:string='General';
+   category:Category=Category.Course;
+   formFilled:boolean=false;
+   
    categories:string[]=['General','Course','Laboratory'];
   
-  constructor() { }
+  constructor(private annManager:AnnouncementService) { }
  
   ngOnInit(): void {
+   
   }
+
+  canExit(){
+    if(this.author!=='' || this.title!=='' || this.message!=='' || this.imageURL!==''){
+      return confirm("You have unsaved changes.Do you want to cancel?");
+    }
+    else{
+      return true;
+    }
+   
+
+  }
+
   onAddAnnouncement(){
     if(this.author!=='' && this.title!=='' && this.message!=='' && this.imageURL!==''){
-      console.log(this.title,this.author,this.category,this.message,this.imageURL);
+      this.formFilled=true;
+      // console.log(this.title,this.author,this.category,this.message,this.imageURL);
+      this.annManager.newAnnouncement={id:'3',title:this.title,author:this.author,message:this.message,imageUrl:this.imageURL,category:this.category};
+      this.annManager.addAnnouncement(this.annManager.newAnnouncement);
+      this.title='';
+      this.author='';
+      this.imageURL='';
+      this.message='';
+     
+
+      
     }
     
     
