@@ -1,0 +1,22 @@
+
+<div class="app-container">
+    
+      
+        <app-category (selectedCategoryEmitter)="selectCategory($event)"></app-category>
+           <div *ngFor="let announcement of filteredAnnouncements" class="app-new-component">
+  
+        <app-notifications [imagePath]="announcement.imageUrl" [message]="announcement.message" [author]="announcement.author" [title]="announcement.title">
+        
+        </app-notifications>
+      
+      
+           </div>
+      
+      
+        
+    
+   
+
+</div>
+
+ 

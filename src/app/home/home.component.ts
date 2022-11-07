@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { Announcement } from './announcement';
-import { Category } from './category';
+import { Component,OnInit } from '@angular/core';
+import { Announcement } from '../announcement';
+import { Category } from '../category';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent {
+export class HomeComponent implements OnInit {
+
   title = 'notifications-app';
   filteredAnnouncements : Announcement[]=[];
   announcements:Announcement[]=[{
@@ -45,11 +47,12 @@ selectCategory(category:string){
   constructor(){
     this.filteredAnnouncements=this.announcements;
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   filterAnnouncements(){
     this.filteredAnnouncements=this.announcements.filter(announcements => Category[announcements.category]===this.selectedCategory);
   }
-  
 
-  
 }
