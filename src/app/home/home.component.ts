@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { Announcement } from '../announcement';
 import { Category } from '../category';
@@ -27,12 +28,13 @@ selectCategory(category:string){
   
 
 }
-  constructor(private annManager:AnnouncementService){
+  constructor(private annManager:AnnouncementService, private httpClient:HttpClientModule){
     
     this.filteredAnnouncements=this.announcements;
   }
   ngOnInit(): void {
     this.announcements=this.annManager.announcements;
+    this.annManager.fetchData();
   }
 
   filterAnnouncements(){
