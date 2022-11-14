@@ -41,7 +41,6 @@ export class AddAnnouncementComponentComponent implements OnInit {
   onAddAnnouncement(){
     if(this.author!=='' && this.title!=='' && this.message!=='' && this.imageURL!==''){
       this.formFilled=true;
-      // console.log(this.title,this.author,this.category,this.message,this.imageURL);
       this.annManager.newAnnouncement={id:'3',title:this.title,author:this.author,message:this.message,imageUrl:this.imageURL,category:this.category};
       this.annManager.addAnnouncement(this.annManager.newAnnouncement);
       this.title='';

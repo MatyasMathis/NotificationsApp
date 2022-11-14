@@ -33,7 +33,6 @@ selectCategory(category:string){
   }
   ngOnInit(): void {
     this.announcements=this.annManager.announcements;
-    throw new Error('Method not implemented.');
   }
 
   filterAnnouncements(){

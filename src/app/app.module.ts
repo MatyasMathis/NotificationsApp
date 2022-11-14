@@ -19,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AnnouncementService } from './services/announcement.service';
 import { CanDeactivateGuard } from './services/candeactivate-guard.service';
+import { EditAnnouncementComponent } from './edit-announcement/edit-announcement.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { CanDeactivateGuard } from './services/candeactivate-guard.service';
     CategoryComponent,
     AnnouncementsComponent,
     AddAnnouncementComponentComponent,
-    HomeComponent
+    HomeComponent,
+    EditAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { CanDeactivateGuard } from './services/candeactivate-guard.service';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
     
   ],
   providers: [AnnouncementService,CanDeactivateGuard],

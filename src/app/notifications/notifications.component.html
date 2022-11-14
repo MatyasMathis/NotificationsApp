@@ -2,10 +2,12 @@
 <div >
     
     <mat-card class="announcement-container">
-        <p class="title">{{title}}</p>
-        <p class="message">{{message}}</p>
-        <p class="author">{{author}}</p>
-        <img mat-card-lg-image src={{imagePath}} alt="random image">
+        <p class="title">{{currentAnnouncement.title}}</p>
+        <p class="message">{{currentAnnouncement.message}}</p>
+        <p class="author">{{currentAnnouncement.author}}</p>
+        <img mat-card-lg-image [src]="currentAnnouncement.imageUrl" alt="random image">
+        <button class="btn btn-primary" [routerLink]="['/edit',currentAnnouncement.id]">Edit</button>
+        <button class="btn btn-danger" (click)="onClickDelete()">Delete</button>
     </mat-card>
     
    
