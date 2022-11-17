@@ -4,17 +4,17 @@
     <form class="my-form">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Title</mat-label>
-        <input name="title"type="text" matInput placeholder="title.." [(ngModel)]="title" >
+        <input name="title"type="text" matInput placeholder="title.." [(ngModel)]="currentAnnouncement.title" >
       </mat-form-field>
     
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Author</mat-label>
-        <input name="author" type="text" matInput placeholder="author.." [(ngModel)]="author" >
+        <input name="author" type="text" matInput placeholder="author.." [(ngModel)]="currentAnnouncement.author" >
       </mat-form-field>
   
       <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Image</mat-label>
-          <textarea name="imageURL" type="URL" matInput placeholder="imageURL.." [(ngModel)]="imageURL" ></textarea>
+          <textarea name="imageURL" type="URL" matInput placeholder="imageURL.." [(ngModel)]="currentAnnouncement.imageUrl" ></textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Category</mat-label>
@@ -28,7 +28,7 @@
   
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Message</mat-label>
-          <textarea name="message" type="text" matInput placeholder="message.." [(ngModel)]="message"></textarea>
+          <textarea name="message" type="text" matInput placeholder="message.." [(ngModel)]="currentAnnouncement.message"></textarea>
         </mat-form-field>
   
         <div class="row">

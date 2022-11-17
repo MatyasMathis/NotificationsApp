@@ -11,15 +11,15 @@ import { Announcement } from '../announcement';
 })
 export class EditAnnouncementComponent implements OnInit {
 
-   title:string='';
-   author:string='';
-   imageURL:string='';
-   message:string='';
-   category:Category=Category.Course;
+  //  title:string='';
+  //  author:string='';
+  //  imageURL:string='';
+  //  message:string='';
+  //  category:Category=Category.Course;
    formFilled:boolean=false;
 
    id:string='';
-   
+   currentAnnouncement:Announcement={message:'message',author:'author',title:'title',imageUrl:'',category:Category.Course,id:'0'};
    categories:string[]=['General','Course','Laboratory'];
   
   constructor(private annManager:AnnouncementService,private route:ActivatedRoute) { }
@@ -29,15 +29,14 @@ export class EditAnnouncementComponent implements OnInit {
       this.id=params.get('id');
     });
 
-    this.title=this.annManager.announcements[this.id].title;
-    this.author=this.annManager.announcements[this.id].author;
-    this.imageURL=this.annManager.announcements[this.id].imageUrl;
-    this.message=this.annManager.announcements[this.id].message;
+   this.annManager.announcements.subscribe(data=>{
+    this.currentAnnouncement=data.find(ann=>ann.id===this.id);
+   });
     
   }
 
   canExit(){
-    if(this.author!=='' || this.title!=='' || this.message!=='' || this.imageURL!==''){
+    if(this.currentAnnouncement.author!=='' || this.currentAnnouncement.title!=='' || this.currentAnnouncement.message!=='' || this.currentAnnouncement.imageUrl!==''){
       return confirm("You have unsaved changes.Do you want to cancel?");
     }
     else{
@@ -48,16 +47,9 @@ export class EditAnnouncementComponent implements OnInit {
   }
 
   onEditAnnouncement(){
-    if(this.author!=='' && this.title!=='' && this.message!=='' && this.imageURL!==''){
+    if(this.currentAnnouncement.author!=='' && this.currentAnnouncement.title!=='' && this.currentAnnouncement.message!=='' && this.currentAnnouncement.imageUrl!==''){
       this.formFilled=true;
-      this.annManager.announcements[this.id]={id:this.id,title:this.title,author:this.author,message:this.message,imageUrl:this.imageURL,category:this.category};
-     
-      this.title='';
-      this.author='';
-      this.imageURL='';
-      this.message='';
-     
-
+      this.annManager.editAnnouncement(this.currentAnnouncement);
       
     }
     

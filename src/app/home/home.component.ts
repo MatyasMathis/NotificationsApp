@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Announcement } from '../announcement';
 import { Category } from '../category';
 import { AnnouncementService } from '../services/announcement.service';
@@ -33,8 +34,10 @@ selectCategory(category:string){
     this.filteredAnnouncements=this.announcements;
   }
   ngOnInit(): void {
-    this.announcements=this.annManager.announcements;
-    this.annManager.fetchData();
+    this.annManager. getAnnouncements().subscribe((ann:Announcement[])=>{
+      this.announcements=ann;
+    });
+    
   }
 
   filterAnnouncements(){

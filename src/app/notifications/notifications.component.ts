@@ -4,6 +4,7 @@ import { Announcement } from '../announcement';
 
 import { Category } from '../category';
 import { AnnouncementService } from '../services/announcement.service';
+import { Guid } from "guid-typescript";
 
 @Component({
   selector: 'app-notifications',
@@ -28,8 +29,7 @@ export class NotificationsComponent implements OnInit {
     this.annManager.editableAnnouncement=this.currentAnnouncement;
   }
   onClickDelete(){
-    let idNumber=Number(this.currentAnnouncement.id);
-    this.annManager.announcements.splice(idNumber,1);
+    this.annManager.deleteAnnouncement(Guid.parse(this.currentAnnouncement.id));
     
   }
   
